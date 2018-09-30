@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.safedata</groupId>
+        <artifactId>d02</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <packaging>pom</packaging>
+    <artifactId>d02s04-properties-files</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>d02s04e01-properties-files</module>
+        <module>d02s04e02-yaml-files</module>
+        <module>d02s04e03-config-per-profile</module>
+        <module>d02s04e04-config-override</module>
+        <module>d02s04e05-loading-properties-files</module>
+    </modules>
+</project>

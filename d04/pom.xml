@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.safedata</groupId>
+        <artifactId>spring-framework.training</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>d04</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>d04s01-main-jpa-annotations</module>
+        <module>d04s02-table-inheritance</module>
+        <module>d04s03-hibernate-specific-annotations</module>
+        <module>d04s04-hibernate-criteria-api</module>
+        <module>d04s05-unit-and-integration-testing</module>
+
+        <module>d04s06-complete-project</module>
+    </modules>
+</project>
