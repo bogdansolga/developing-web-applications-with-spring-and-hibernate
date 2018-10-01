@@ -1,7 +1,7 @@
 package net.safedata.spring.training.hibernate.criteria.service;
 
-import com.cerner.training.d05s02.model.Store;
-import com.cerner.training.d05s02.repository.StoreRepository;
+import net.safedata.spring.training.Store;
+import net.safedata.spring.training.hibernate.criteria.repository.StoreRepository;
 
 public class StoreService {
 
