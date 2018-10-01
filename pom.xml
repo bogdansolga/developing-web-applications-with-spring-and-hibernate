@@ -17,29 +17,6 @@
         <version>2.0.5.RELEASE</version>
     </parent>
 
-    <scm>
-
-    </scm>
-
-    <mailingLists>
-
-    </mailingLists>
-
-    <developers>
-        <developer>
-            <id>1</id>
-            <name>john.doe</name>
-        </developer>
-    </developers>
-
-    <ciManagement>
-
-    </ciManagement>
-
-    <issueManagement>
-
-    </issueManagement>
-
     <modules>
         <module>domain-model</module>
         <module>jpa-domain-model</module>
