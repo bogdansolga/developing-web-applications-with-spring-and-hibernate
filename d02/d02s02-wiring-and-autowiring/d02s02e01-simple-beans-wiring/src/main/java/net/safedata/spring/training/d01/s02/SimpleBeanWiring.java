@@ -22,6 +22,18 @@ public class SimpleBeanWiring {
         // retrieving and using the ProductService; it will have its dependency automatically wired by Spring
         final ProductService productService = applicationContext.getBean(ProductService.class);
         productService.displayProducts();
+
+        //TODO implement the next example
+        storeServiceWiring();
+    }
+
+    private static void storeServiceWiring() {
+        //TODO:
+        // create two beans - a StoreService and a StoreRepository
+        // wire them using:
+        //  - first: constructor setting
+        //  - if (enoughTime): property setting
+        // display a message from the store repository
     }
 
     private static ApplicationContext buildApplicationContext() {

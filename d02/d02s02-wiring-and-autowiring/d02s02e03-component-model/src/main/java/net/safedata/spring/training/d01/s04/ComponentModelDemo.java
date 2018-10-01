@@ -17,5 +17,14 @@ public class ComponentModelDemo {
 
         final ProductController productController = applicationContext.getBean(ProductController.class);
         productController.displayProducts();
+
+        //TODO implement the next example
+        sectionThreeLayerExample();
+    }
+
+    private static void sectionThreeLayerExample() {
+        //TODO:
+        // create a three layered application for the Store or Section entity
+        // hint: create the classes in the same packages, to reuse the ComponentScan
     }
 }
