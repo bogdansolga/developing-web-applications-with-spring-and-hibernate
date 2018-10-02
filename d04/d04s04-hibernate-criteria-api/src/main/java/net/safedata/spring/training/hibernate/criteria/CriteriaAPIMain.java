@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Level;
 
-public class JPAMain {
+public class CriteriaAPIMain {
 
     private static EntityManagerFactory entityManagerFactory;
     private static EntityManager entityManager;
