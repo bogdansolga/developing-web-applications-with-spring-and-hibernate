@@ -6,11 +6,14 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Repository
 public class ProductRepository {
 
     private static final Object MUTEX = new Object();
+
+    private static final Random RANDOM = new Random(100);
 
     // an in-memory list of products
     private List<Product> products = new ArrayList<>(1);
@@ -18,11 +21,12 @@ public class ProductRepository {
     @PostConstruct
     public void init() {
         products.add(getDefaultProduct());
+        products.add(getDefaultProduct());
+        products.add(getDefaultProduct());
     }
 
-    @SuppressWarnings("unused")
     public Product get(int id) {
-        return products.get(0);
+        return products.get(id);
     }
 
     public List<Product> getAll() {
@@ -45,6 +49,6 @@ public class ProductRepository {
     }
 
     private Product getDefaultProduct() {
-        return new Product(24, "A fancy iSomething", 230d);
+        return new Product(RANDOM.nextInt(50), "A fancy iSomething with the ID " + RANDOM.nextInt(), RANDOM.nextDouble());
     }
 }
