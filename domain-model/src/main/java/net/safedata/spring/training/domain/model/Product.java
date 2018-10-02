@@ -1,5 +1,7 @@
 package net.safedata.spring.training.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +31,7 @@ public class Product extends AbstractEntity {
         this.tags = null;
     }
 
+    @JsonCreator
     public Product(final int id, final String name, final double price) {
         this.id = id;
         this.name = name;
