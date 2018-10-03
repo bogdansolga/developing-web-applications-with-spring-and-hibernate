@@ -3,9 +3,7 @@ package net.safedata.spring.training.d02.s05.service;
 import net.safedata.spring.training.d02.s05.model.Product;
 import net.safedata.spring.training.d02.s05.repository.ProductRepository;
 import net.safedata.spring.training.d02.s05.repository.ProductRepositoryCustom;
-import net.safedata.spring.training.d02.s05.repository.ProductRepositoryCustomImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
