@@ -38,7 +38,7 @@ public class Store extends AbstractEntity {
     private String location;
 
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<StoreSection> storeSections;
+    private Set<Section> sections;
 
     @PrePersist
     public void beforeSave() {
@@ -91,12 +91,12 @@ public class Store extends AbstractEntity {
         this.storeManagers = storeManagers;
     }
 
-    public Set<StoreSection> getStoreSections() {
-        return storeSections;
+    public Set<Section> getSections() {
+        return sections;
     }
 
-    public void setStoreSections(Set<StoreSection> storeSections) {
-        this.storeSections = storeSections;
+    public void setSections(Set<Section> sections) {
+        this.sections = sections;
     }
 
     @Override

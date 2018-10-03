@@ -44,9 +44,9 @@ public class Product extends AbstractEntity {
     @Column(name = "name", unique = true, nullable = false, insertable = true, updatable = false, length = 50)
     private String name;
 
-    @ManyToOne(targetEntity = StoreSection.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Section.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "sectionId")
-    private StoreSection storeSection;
+    private Section section;
 
     public int getId() {
         return id;
@@ -64,12 +64,12 @@ public class Product extends AbstractEntity {
         this.name = name;
     }
 
-    public StoreSection getStoreSection() {
-        return storeSection;
+    public Section getSection() {
+        return section;
     }
 
-    public void setStoreSection(StoreSection storeSection) {
-        this.storeSection = storeSection;
+    public void setSection(Section section) {
+        this.section = section;
     }
 
     @Override
@@ -79,12 +79,12 @@ public class Product extends AbstractEntity {
         Product product = (Product) o;
         return id == product.id &&
                 Objects.equals(name, product.name) &&
-                Objects.equals(storeSection, product.storeSection);
+                Objects.equals(section, product.section);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, storeSection);
+        return Objects.hash(id, name, section);
     }
 
     @Override

@@ -17,7 +17,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Section")
-public class StoreSection extends AbstractEntity {
+public class Section extends AbstractEntity {
 
     @Id
     @GeneratedValue(generator = "section_sequence_generator")
@@ -72,8 +72,8 @@ public class StoreSection extends AbstractEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof StoreSection)) return false;
-        StoreSection that = (StoreSection) o;
+        if (!(o instanceof Section)) return false;
+        Section that = (Section) o;
         return id == that.id &&
                 Objects.equals(sectionName, that.sectionName);
     }

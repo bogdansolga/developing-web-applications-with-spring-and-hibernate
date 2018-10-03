@@ -2,7 +2,7 @@ package net.safedata.spring.training.hibernate.criteria;
 
 import net.safedata.spring.training.Product;
 import net.safedata.spring.training.Store;
-import net.safedata.spring.training.StoreSection;
+import net.safedata.spring.training.Section;
 import net.safedata.spring.training.hibernate.criteria.repository.ProductRepository;
 import net.safedata.spring.training.hibernate.criteria.service.ProductService;
 
@@ -101,12 +101,12 @@ public class CriteriaAPIMain {
         final Set<Product> products = new HashSet<>(1);
         products.add(product);
 
-        final Set<StoreSection> storeSections = new HashSet<>(1);
-        final StoreSection storeSection = new StoreSection();
-        storeSection.setProducts(products);
+        final Set<Section> sections = new HashSet<>(1);
+        final Section section = new Section();
+        section.setProducts(products);
 
-        storeSection.setStore(store);
-        store.setStoreSections(storeSections);
+        section.setStore(store);
+        store.setSections(sections);
 
         entityManager.persist(store);
     }
