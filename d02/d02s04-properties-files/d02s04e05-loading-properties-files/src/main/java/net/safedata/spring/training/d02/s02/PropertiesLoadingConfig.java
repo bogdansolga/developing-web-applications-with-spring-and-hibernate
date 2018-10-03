@@ -14,8 +14,10 @@ import javax.annotation.PostConstruct;
  * @author bogdan.solga
  */
 @Configuration
-@PropertySource("classpath:product.properties")
-@PropertySource("file:${user.dir}/d02/d02s02/d02s02e05-loading-properties-files/src/main/an-external-file.properties")
+@PropertySource({
+        "classpath:product.properties",
+        "file:${user.dir}/d02/d02s04-properties-files/d02s04e05-loading-properties-files/src/main/an-external-file.properties"
+})
 public class PropertiesLoadingConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesLoadingConfig.class);

@@ -14,8 +14,13 @@
     </parent>
 
     <modules>
-        <module>d03s01-spring-web</module>
-        <module>d03s02-exception-handling</module>
-        <module>d03s03-database-connection</module>
+        <module>d03s01-embedded-database-using-jdbc</module>
+        <module>d03s02-embedded-database-using-jpa</module>
+        <module>d03s02-real-database</module>
+        <module>d03s03-main-jpa-annotations</module>
+        <module>d03s04-table-inheritance</module>
+        <module>d03s05-hibernate-specific-annotations</module>
+        <module>d03s06-hibernate-criteria-api</module>
+        <module>d03s07-using-hibernate-classes</module>
     </modules>
 </project>

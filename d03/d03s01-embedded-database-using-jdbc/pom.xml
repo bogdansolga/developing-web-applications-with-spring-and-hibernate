@@ -4,18 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <artifactId>d03s01-embedded-database-using-jdbc</artifactId>
+
     <parent>
         <groupId>net.safedata</groupId>
-        <artifactId>spring-framework.training</artifactId>
+        <artifactId>d03</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>d04</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>d04s05-unit-and-integration-testing</module>
-
-        <module>d04s06-complete-project</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+    </dependencies>
 </project>

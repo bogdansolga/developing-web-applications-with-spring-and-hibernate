@@ -4,29 +4,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>d02</artifactId>
+    <artifactId>d02s05-spring-web</artifactId>
     <packaging>pom</packaging>
 
     <parent>
         <groupId>net.safedata</groupId>
-        <artifactId>spring-framework.training</artifactId>
+        <artifactId>d02</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <modules>
-        <module>d02s01-configuring-spring</module>
-        <module>d02s02-wiring-and-autowiring</module>
-        <module>d02s03-spring-boot-intro</module>
-        <module>d02s04-properties-files</module>
-        <module>d02s05-spring-web</module>
-        <module>d02s06-centralized-exception-handling</module>
-        <module>d02s07-spring-security</module>
+        <module>d02s05e01-spring-web-annotations</module>
+        <module>d02s05e02-spring-oxm-demo</module>
+        <module>d02s05e03-spring-oxm-dto-demo</module>
     </modules>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 </project>
