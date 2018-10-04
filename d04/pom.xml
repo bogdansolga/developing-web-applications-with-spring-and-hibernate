@@ -15,7 +15,7 @@
 
     <modules>
         <module>d04s05-unit-and-integration-testing</module>
-
         <module>d04s06-complete-project</module>
+        <module>d04s03-our-developed-project</module>
     </modules>
 </project>
