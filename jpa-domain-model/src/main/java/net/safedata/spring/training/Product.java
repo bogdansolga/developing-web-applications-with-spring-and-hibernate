@@ -65,6 +65,17 @@ public class Product extends AbstractEntity {
     @JoinColumn(name = "sectionId")
     private Section section;
 
+    public Product() {}
+
+    public Product(final String name) {
+        this.name = name;
+    }
+
+    public Product(final String name, final Section section) {
+        this.name = name;
+        this.section = section;
+    }
+
     public int getId() {
         return id;
     }
