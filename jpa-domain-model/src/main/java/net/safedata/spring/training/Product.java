@@ -5,25 +5,35 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import java.util.Objects;
 
-@Entity
+@Entity(name = "Product")
 @Table(
-        name = "Product"
-        //schema = "spring_training"
+        name = "Product",
+        schema = "spring_training",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "uniqueName", columnNames = "name")
+        },
+        indexes = {
+                @Index(name = "nameIndex", columnList = "name")
+        }
 )
 @NamedQueries({
         @NamedQuery(
                 name = "Product.bySection",
                 query = "SELECT product " +
                         "FROM Product product " +
-                        "WHERE product.storeSection.store.id = :storeId"
+                        "WHERE product.section.store.id = :storeId"
         ),
 
         @NamedQuery(
@@ -32,13 +42,20 @@ import java.util.Objects;
                         "FROM Product product"
         )
 })
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Product.productById",
+                query = "SELECT * " +
+                        "FROM Product p " +
+                        "WHERE p.id = :productId"
+        )
+})
 public class Product extends AbstractEntity {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "product_sequence_generator")
-    @SequenceGenerator(name = "product_sequence_generator", sequenceName="product_sequence",
-            allocationSize = 1)
+    @SequenceGenerator(name = "product_sequence_generator", sequenceName="product_sequence", allocationSize = 1)
     private int id;
 
     @Column(name = "name", unique = true, nullable = false, insertable = true, updatable = false, length = 50)
