@@ -1,6 +1,6 @@
 package net.safedata.jpa.intro;
 
-import net.safedata.spring.training.AbstractEntity;
+import net.safedata.spring.training.jpa.model.AbstractEntity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
