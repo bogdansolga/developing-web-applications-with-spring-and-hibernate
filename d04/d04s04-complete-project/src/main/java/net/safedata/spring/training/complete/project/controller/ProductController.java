@@ -67,9 +67,7 @@ public class ProductController {
      */
     @GetMapping("")
     public Iterable<ProductDTO> getAll() {
-        final List<ProductDTO> all = productService.getAll();
-        all.forEach(it -> System.out.println(it.getId() + " - " + it.getProductName()));
-        return all;
+        return productService.getAll();
     }
 
     /**
