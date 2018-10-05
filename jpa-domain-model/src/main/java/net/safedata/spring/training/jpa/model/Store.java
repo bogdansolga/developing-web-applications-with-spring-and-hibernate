@@ -1,4 +1,4 @@
-package net.safedata.spring.training;
+package net.safedata.spring.training.jpa.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -50,11 +50,11 @@ public class Store extends AbstractEntity {
             name = "StoreManager",
             joinColumns = {
                 // navigating from the 'StoreManager' to the 'Store'
-                @JoinColumn(name = "storeId", referencedColumnName = "id")
+                @JoinColumn(name = "store_id", referencedColumnName = "id")
             },
             inverseJoinColumns = {
                 // navigating from the 'StoreManager' to the 'Manager'
-                @JoinColumn(name = "managerId", referencedColumnName = "id")
+                @JoinColumn(name = "manager_id", referencedColumnName = "id")
             }
     )
     private Set<Manager> storeManagers;

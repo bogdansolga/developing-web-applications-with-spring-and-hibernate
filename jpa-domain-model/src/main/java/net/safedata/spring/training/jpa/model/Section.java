@@ -1,4 +1,4 @@
-package net.safedata.spring.training;
+package net.safedata.spring.training.jpa.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,14 +26,14 @@ public class Section extends AbstractEntity {
     private int id;
 
     @Column(name = "name", length = 40)
-    private String sectionName;
+    private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "storeId")
     private Store store;
 
     // 'mappedBy' tells the persistence provider that the join column is in the Product table
-    @OneToMany(mappedBy = "storeSection", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "section", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy(value = "name")
     private Set<Product> products;
 
@@ -45,12 +45,12 @@ public class Section extends AbstractEntity {
         this.id = id;
     }
 
-    public String getSectionName() {
-        return sectionName;
+    public String getName() {
+        return name;
     }
 
-    public void setSectionName(String sectionName) {
-        this.sectionName = sectionName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Store getStore() {
@@ -75,11 +75,11 @@ public class Section extends AbstractEntity {
         if (!(o instanceof Section)) return false;
         Section that = (Section) o;
         return id == that.id &&
-                Objects.equals(sectionName, that.sectionName);
+                Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, sectionName);
+        return Objects.hash(id, name);
     }
 }

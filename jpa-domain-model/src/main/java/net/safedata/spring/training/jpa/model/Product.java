@@ -1,5 +1,6 @@
-package net.safedata.spring.training;
+package net.safedata.spring.training.jpa.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -55,13 +56,13 @@ public class Product extends AbstractEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "product_sequence_generator")
-    @SequenceGenerator(name = "product_sequence_generator", sequenceName="product_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "product_sequence_generator", sequenceName = "product_sequence", allocationSize = 1)
     private int id;
 
     @Column(name = "name", unique = true, nullable = false, insertable = true, updatable = false, length = 50)
     private String name;
 
-    @ManyToOne(targetEntity = Section.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Section.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "sectionId")
     private Section section;
 

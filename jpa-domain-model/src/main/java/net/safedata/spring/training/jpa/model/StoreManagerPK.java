@@ -1,4 +1,4 @@
-package net.safedata.spring.training;
+package net.safedata.spring.training.jpa.model;
 
 import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
