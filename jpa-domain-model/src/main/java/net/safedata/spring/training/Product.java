@@ -30,7 +30,7 @@ import java.util.Objects;
 )
 @NamedQueries({
         @NamedQuery(
-                name = "Product.bySection",
+                name = "Product.byStore",
                 query = "SELECT product " +
                         "FROM Product product " +
                         "WHERE product.section.store.id = :storeId"
