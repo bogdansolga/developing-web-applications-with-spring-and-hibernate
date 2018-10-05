@@ -1,6 +1,5 @@
 package net.safedata.spring.training.d02.s05.config;
 
-import net.safedata.spring.training.d02.s05.model.Product;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -9,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * A simple {@link javax.sql.DataSource} configuration, which:
  * <ul>
  *     <li>configures the JPA repositories, using the {@link EnableJpaRepositories} annotation</li>
- *     <li>inserts a simple {@link Product} in the auto-wired [in-memory] database</li>
+ *     <li>enables the transaction management support</li>
  * </ul>
  *
  * @author bogdan.solga
