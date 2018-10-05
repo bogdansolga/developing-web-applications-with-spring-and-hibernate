@@ -20,7 +20,7 @@ import java.util.Objects;
 @Entity(name = "Product")
 @Table(
         name = "Product",
-        schema = "spring_training",
+        //schema = "spring_training",
         uniqueConstraints = {
                 @UniqueConstraint(name = "uniqueName", columnNames = "name")
         },
