@@ -1,9 +1,7 @@
 package net.safedata.spring.training.d02.s05.service;
 
 import net.safedata.spring.training.d02.s05.model.Product;
-import net.safedata.spring.training.d02.s05.model.Section;
 import net.safedata.spring.training.d02.s05.repository.ProductRepository;
-import net.safedata.spring.training.d02.s05.repository.SectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -11,53 +9,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class ProductService {
 
     private final ProductRepository productRepository;
-    private final SectionRepository sectionRepository;
 
     @Autowired
-    public ProductService(final ProductRepository productRepository, final SectionRepository sectionRepository) {
+    public ProductService(final ProductRepository productRepository) {
         this.productRepository = productRepository;
-        this.sectionRepository = sectionRepository;
-    }
-
-    //@PostConstruct
-    public void bootstrap() {
-        final Product product = new Product();
-        product.setName("Huawei P10");
-        product.setPrice(250d);
-
-        final Section section = new Section();
-        section.setName("Phones");
-
-        final Set<Product> products = new HashSet<>(1);
-        products.add(product);
-
-        // linking the section to the product
-        section.setProducts(products);
-
-        // linking the product to the section
-        product.setSection(section);
-
-        //create(product);
-        createSection(section);
-
-        /*
-        final List<Product> savedProducts = jdbcTemplate.queryForList("SELECT * FROM Product", Product.class);
-        savedProducts.forEach(it -> System.out.println(it));
-        */
-    }
-
-    @Transactional
-    public void createSection(Section section) {
-        sectionRepository.save(section);
     }
 
     @Transactional(
@@ -97,6 +58,7 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    @SuppressWarnings("unused")
     public void paginationExample() {
         // 1st benefit - better method contract
         // 2nd benefit - chaining other processing methods on the result
