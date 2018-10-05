@@ -6,17 +6,16 @@
 
     <parent>
         <groupId>net.safedata</groupId>
-        <artifactId>spring-framework.training</artifactId>
+        <artifactId>d04</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>d04</artifactId>
+    <artifactId>d04s01-jpa-continued</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>d04s01-jpa-continued</module>
-        <module>d04s02-unit-and-integration-testing</module>
-        <module>d04s03-our-developed-project</module>
-        <module>d04s04-complete-project</module>
+        <module>d04s01e01-hibernate-specific-annotations</module>
+        <module>d04s01e02-using-hibernate-classes</module>
+        <module>d04s01e03-hibernate-criteria-api</module>
     </modules>
 </project>
