@@ -42,7 +42,7 @@ public class Store extends AbstractEntity {
 
     @PrePersist
     public void beforeSave() {
-        System.out.println("Saving the Product " + getId());
+        System.out.println("Saving the Store " + getId());
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
