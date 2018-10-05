@@ -1,6 +1,7 @@
 package net.safedata.spring.training.complete.project;
 
-import net.safedata.spring.training.complete.project.model.Product;
+import net.safedata.spring.training.jpa.model.Product;
+import net.safedata.spring.training.complete.project.dto.ProductDTO;
 import net.safedata.spring.training.complete.project.repository.ProductRepository;
 import net.safedata.spring.training.complete.project.service.ProductService;
 import org.junit.Test;
@@ -33,16 +34,17 @@ public class ProductServiceTest {
     public void givenThereAreAvailableProducts_whenRetrievingProducts_thenProductsAreRetrievedCorrectly() {
         // arrange, including mocking behavior setup    --> given
         final List<Product> products = Arrays.asList(
-                new Product(1, "Samsung S8"),
-                new Product(2, "Google Pixel")
+                new Product("Samsung S8"),
+                new Product("Google Pixel")
         );
         when(productRepository.findAll()).thenReturn(products); // simple mocking example
 
         // act --> calling the tested service method    --> when
-        final Iterable<Product> resulted = productService.getAll();
+        final List<ProductDTO> resulted = productService.getAll();
 
         // assert --> verifying the response of the tested method is correct (by the requirements)  --> then
         assertNotNull(resulted);
+        System.out.println(resulted.size());
         assertThat(resulted.iterator().hasNext(), is(true));
     }
 
@@ -50,7 +52,7 @@ public class ProductServiceTest {
     public void givenThereAreNoAvailableProducts_whenGettingProducts_thenNoProductsAreReturned() {
         when(productRepository.findAll()).thenReturn(new ArrayList<>());
 
-        final Iterable<Product> resulted = productService.getAll();
+        final Iterable<ProductDTO> resulted = productService.getAll();
 
         assertNotNull(resulted);
         //assertThat(resulted.size(), is(0));
@@ -67,10 +69,10 @@ public class ProductServiceTest {
 
         when(productRepository.findById(productId)).thenReturn(Optional.of(product));
 
-        final Product resulted = productService.get(productId);
+        final ProductDTO resulted = productService.get(productId);
 
         assertNotNull(resulted);
-        assertThat(resulted.getName(), is(mockedName));
+        assertThat(resulted.getProductName(), is(mockedName));
         assertThat(resulted.getId(), not(0));
         assertThat(resulted.getId(), is(productId));
     }
@@ -82,16 +84,11 @@ public class ProductServiceTest {
 
     @Test
     public void givenAProductIsSaved_whenSavingTheProduct_thenSaveIsCalledOneTimesAndTheResponseShouldNotBeEmptyOrNull () {
-        final Product product = mock(Product.class);
+        final ProductDTO product = mock(ProductDTO.class);
 
-        final Product saved = mock(Product.class);
-        when(productRepository.save(any(Product.class))).thenReturn(saved);
-
-        final Product created = productService.create(product);
+        productService.create(product);
 
         // it verifies that the .save method (from the productRepository collaborator) was called exactly 1 times
-        verify(productRepository, times(1)).save(product);
-
-        assertNotNull(created);
+        verify(productRepository, times(1)).save(any(Product.class));
     }
 }

@@ -1,6 +1,7 @@
 package net.safedata.spring.training.complete.project.controller;
 
-import net.safedata.spring.training.complete.project.model.Product;
+import net.safedata.spring.training.jpa.model.Product;
+import net.safedata.spring.training.complete.project.dto.ProductDTO;
 import net.safedata.spring.training.complete.project.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * A Spring {@link RestController} used to showcase the modeling of a REST controller for CRUD operations
@@ -33,15 +36,15 @@ public class ProductController {
     }
 
     /**
-     * Creates the referenced {@link Product}
+     * Creates a {@link Product} entity from the referenced {@link ProductDTO}
      *
-     * @param product the {@link Product} to be created
+     * @param productDTO the {@link ProductDTO} which contains the data of the {@link Product} to be created
      *
      * @return a {@link ResponseEntity} with the appropriate {@link HttpStatus}
      */
     @PostMapping("")
-    public ResponseEntity create(@RequestBody Product product) {
-        productService.create(product);
+    public ResponseEntity create(@RequestBody ProductDTO productDTO) {
+        productService.create(productDTO);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -50,10 +53,10 @@ public class ProductController {
      *
      * @param id the id of the requested {@link Product}
      *
-     * @return the serialized {@link Product}
+     * @return the serialized {@link ProductDTO}
      */
     @GetMapping("/{id}")
-    public Product getProduct(@PathVariable final int id) {
+    public ProductDTO getProduct(@PathVariable final int id) {
         return productService.get(id);
     }
 
@@ -63,21 +66,23 @@ public class ProductController {
      * @return the serialized {@link Product}s
      */
     @GetMapping("")
-    public Iterable<Product> getAll() {
-        return productService.getAll();
+    public Iterable<ProductDTO> getAll() {
+        final List<ProductDTO> all = productService.getAll();
+        all.forEach(it -> System.out.println(it.getId() + " - " + it.getProductName()));
+        return all;
     }
 
     /**
      * Updates the {@link Product} with the specified ID with the details from the referenced {@link Product}
      *
      * @param id the ID of the updated {@link Product}
-     * @param product the new {@link Product} details
+     * @param productDTO the {@link ProductDTO} with the new {@link Product} details
      *
      * @return a {@link ResponseEntity} with the appropriate {@link HttpStatus}
      */
     @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable final int id, @RequestBody Product product) {
-        productService.update(id, product);
+    public ResponseEntity update(@PathVariable final int id, @RequestBody ProductDTO productDTO) {
+        productService.update(id, productDTO);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

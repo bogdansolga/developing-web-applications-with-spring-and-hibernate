@@ -3,15 +3,11 @@ package net.safedata.spring.training.complete.project;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
-import net.safedata.spring.training.complete.project.model.Product;
-import net.safedata.spring.training.complete.project.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -31,18 +27,10 @@ public class ProductControllerTest extends AbstractTransactionalTestNGSpringCont
     @LocalServerPort
     private int port;
 
-    @Autowired
-    private ProductService productService;
-
     @BeforeMethod
     public void init() {
         RestAssured.port = port;
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL);
-    }
-
-    @BeforeClass
-    public void initializeProducts() {
-        productService.init();
     }
 
     @Test
@@ -53,7 +41,7 @@ public class ProductControllerTest extends AbstractTransactionalTestNGSpringCont
                 .get("/product/{id}", 1).
         then()
                 .statusCode(HttpStatus.OK.value())
-                .body("name", is(PRODUCT_NAME));
+                .body("productName", is(PRODUCT_NAME));
     }
 
     @Test
@@ -65,7 +53,7 @@ public class ProductControllerTest extends AbstractTransactionalTestNGSpringCont
         then()
                 .statusCode(HttpStatus.OK.value())
                 .body("$.size", is(10))
-                .body("[0].name", is(PRODUCT_NAME));
+                .body("[0].productName", is(PRODUCT_NAME));
     }
 
     // a sample of using a dataProvider

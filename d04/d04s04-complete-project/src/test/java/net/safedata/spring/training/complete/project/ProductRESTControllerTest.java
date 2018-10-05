@@ -22,7 +22,7 @@ import static org.hamcrest.Matchers.hasSize;
 @TestPropertySource(locations = "classpath:application.yml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = {CompleteProductsProject.class})
+@ContextConfiguration(classes = CompleteProductsProject.class)
 public class ProductRESTControllerTest {
 
     @Autowired
